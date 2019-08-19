@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+    <link rel="stylesheet" href="appstyles.css">
+    <link rel="stylesheet" href="homestyles.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>ToDoListApp</h1>
+    </div>
+
+    <!-- Home page contents between header and footer -->
+    <div class="home-body">
+
+        <!-- Navigation bar on left side in home page -->
+        <div id="navigation-bar">
+            <ul>
+                <li><a href="#todo">Todo</a></li>
+                <li><a href="#user">User</a></li>
+                <li><a href="#login">Login</a></li>
+            </ul>
+        </div>
+
+        <!-- Home page content based on navigation bar -->
+        <div id="home-content">
+
+            <!-- ToDo list section -->
+            <div id="todo" class="home-content-item">
+
+                <!-- Search bar to add todo items -->
+                <div id="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <input type="submit" value="Add">
+                </div>
+
+                <!-- To do items list -->
+                <ul id="todo-items">
+                    <li>Wake up at 5 AM&nbsp;<span><button>X</button></span>&nbsp;<span style="float: right;"><button>Edit</button></span></li>
+                    <li>Go to gym.&nbsp;<span><button>X</button></span>&nbsp;<span style="float: right;"><button>Edit</button></span></li>
+                </ul>
+            </div>
+
+            <!-- User profile section -->
+            <div id="user" class="home-content-item">
+                <h2>B. Sai Chaitanya</h2>
+                <h3>Software Trainee</h3>
+            </div>
+
+            <!-- Login page -->
+            <div id="login" class="home-content-item">
+                <h2>Login...</h2>
+                <form>
+                    <input type="text" name="username" placeholder="username"/>
+                    <br/><br/>
+                    <input type="password" name="password" placeholder="password"/>
+                    <br/><br/>
+                    <input type="submit" value="Log in"/>
+                    <br/><br/>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Footer -->
+    <div class="footer">
+        <ul>
+            <li><a class="footer-item" href="home.html">Home</a></li>
+            <li class="footer-item">|</li>
+            <li><a class="footer-item" href="about.html">About</a></li>
+            <li class="footer-item">|</li>
+            <li><a class="footer-item" href="contact.html">Contact us</a></li>
+        </ul>
+    </div>
+</body>
+</html>
