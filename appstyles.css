@@ -12,11 +12,20 @@ body{
     height:100%;
 }
 
+.grid-container{
+    display:grid;
+    grid-template-areas:
+    'header header header header'
+    'menu main main main'
+    'footer footer footer footer';
+}
+
 .header{
     background-color: #515b5e;
     color: aliceblue;
     padding: 4px 4px 4px 8px;
     width: 100%;
+    grid-area: header;
 }
 
 /*Logo Font*/
@@ -32,6 +41,7 @@ h1{
     padding: 4px 4px 4px 8px;
     width:100%;
     text-align: center;
+    grid-area: footer;
 }
 
 /* List inside footer */
