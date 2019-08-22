@@ -95,6 +95,64 @@ html *{
   float:left;
 }
 
+.completed{
+  float:left;
+  display: block;
+  cursor: pointer;
+  font-size: 24px;
+  user-select: none;
+  margin-right: 4px;
+  padding-top:6px;
+  height: 18px;
+  width: 18px;
+  position:relative;
+}
+
+.completed input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  background-color: rgb(184, 179, 179);
+}
+
+.completed:hover input ~ .checkmark {
+  background-color: rgb(160, 153, 153);
+}
+
+.completed input:checked ~ .checkmark {
+  background-color: #515b5e;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.completed input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.completed .checkmark:after {
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
 .todo-desc{
   padding-top:6px; 
   margin:0px; 

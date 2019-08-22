@@ -12,13 +12,13 @@ function getTodoList(){
 
     function displayTodo(todo_list){
         for(i = 0; i < todo_list.length; i++)
-            addTodo(todo_list[i].title);
+            addTodo(todo_list[i].title, todo_list[i].completed);
     }
 }
 
 
 // Function to create a todo item block using the input description
-function getTodoItem(desc){
+function getTodoItem(desc, isCompleted){
     let todo_block = document.createElement('div');
     todo_block.setAttribute('class', 'todo-block');
     todo_block.classList.add('animate-add');
@@ -26,6 +26,18 @@ function getTodoItem(desc){
     let todo_item = document.createElement('div');
     todo_item.setAttribute('class', 'todo-item');
     
+    //Create a custom checkbox
+    var checkbox = document.createElement('label');
+    checkbox.setAttribute('class', 'completed');
+    var checkbox_input = document.createElement('input')
+    checkbox_input.setAttribute('type', 'checkbox');
+    var checkmark = document.createElement('span');
+    checkmark.setAttribute('class', 'checkmark');
+    if(isCompleted)
+        checkbox_input.setAttribute('checked', 'checked');
+    checkbox.appendChild(checkbox_input);
+    checkbox.appendChild(checkmark);
+
     //Create div with text and edit button
     let todo_div1 = document.createElement('div');
     let todo_desc = document.createElement('p');
@@ -61,6 +73,7 @@ function getTodoItem(desc){
     todo_div1.appendChild(edit_button);
     todo_div2.appendChild(edit_input);
     todo_div2.appendChild(save_button);
+    todo_item.appendChild(checkbox);
     todo_item.appendChild(todo_div1);
     todo_item.appendChild(todo_div2);
     delete_button.appendChild(delete_icon);
@@ -72,12 +85,12 @@ function getTodoItem(desc){
 
 
 // Function to add a new todo item to todo list
-function addTodo(desc){
+function addTodo(desc, isCompleted = false){
     if(desc == "")
         return;
         
     let todo_items_list = document.getElementById("todo-items-list");
-    let todo_block = getTodoItem(desc);
+    let todo_block = getTodoItem(desc, isCompleted);
     todo_items_list.appendChild(todo_block);
     document.getElementById('todo-input').value = "";
     searchTodo("");
