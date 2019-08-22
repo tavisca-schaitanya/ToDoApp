@@ -34,7 +34,7 @@
 
                 <!-- Search bar to add todo items -->
                 <div id="search-bar">
-                    <input id="todo-input" type="text" placeholder="Search...">
+                    <input id="todo-input" type="text" placeholder="Search..." onkeyup="searchTodo(this.value)">
                     <input type="submit" value="Add" onclick="addTodo()">
                 </div>
 

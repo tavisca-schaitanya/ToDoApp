@@ -1,6 +1,7 @@
 // Function to create a todo item block using the input description
 function getTodoItem(desc){
     let todo_block = document.createElement('div');
+    todo_block.setAttribute('class', 'todo-block');
     
     let todo_item = document.createElement('div');
     todo_item.setAttribute('class', 'todo-item');
@@ -55,6 +56,8 @@ function addTodo(){
     let todo_items_list = document.getElementById("todo-items-list");
     let todo_block = getTodoItem(desc);
     todo_items_list.appendChild(todo_block);
+    document.getElementById('todo-input').value = "";
+    searchTodo("");
     toggleEmptyTodo();
 }
 
@@ -89,5 +92,23 @@ function toggleEmptyTodo(){
     }
     else{
         document.getElementById("empty-display").style.display = "none";
+    }
+}
+
+// Function to search for todo items
+function searchTodo(keyword){
+    let todo_items_list = document.getElementById('todo-items-list');
+    let todo_blocks = todo_items_list.getElementsByClassName('todo-block');
+    for(let i = 0; i < todo_blocks.length; i++)
+    {
+        let todo_item = todo_blocks[i].getElementsByClassName('todo-item')[0];
+        let todo_text_item = todo_item.getElementsByTagName("div")[0];
+        let todo_text = todo_text_item.getElementsByTagName('p')[0].innerHTML;
+        if(todo_text.toLowerCase().indexOf(keyword.toLowerCase()) > -1){
+            todo_blocks[i].style.display = "block";
+        }
+        else{
+            todo_blocks[i].style.display = "none";
+        }
     }
 }

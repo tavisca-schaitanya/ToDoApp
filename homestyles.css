@@ -148,8 +148,8 @@ html *{
   font-size: 17px;
   line-height: 20px;
   text-decoration: none;
-  transform: translateX(1);
 }
+
 
 #search-bar input[type=submit], #edit-block input[type=submit]{
   background-color: #515b5e;
