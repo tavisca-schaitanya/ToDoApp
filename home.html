@@ -7,6 +7,7 @@
     <title>Home</title>
     <link rel="stylesheet" href="appstyles.css">
     <link rel="stylesheet" href="homestyles.css">
+    <script src="homescript.js"></script>
 </head>
 <body class="grid-container">
     <!-- Header -->
@@ -15,7 +16,6 @@
     </div>
 
     <!-- Home page contents between header and footer -->
-    <!-- <div class="home-body"> -->
 
         <!-- Navigation bar on left side in home page -->
         <div id="navigation-bar">
@@ -34,16 +34,18 @@
 
                 <!-- Search bar to add todo items -->
                 <div id="search-bar">
-                    <input type="text" placeholder="Search...">
-                    <input type="submit" value="Add">
+                    <input id="todo-input" type="text" placeholder="Search...">
+                    <input type="submit" value="Add" onclick="addTodo()">
                 </div>
 
                 <!-- To do items list -->
-                <ul id="todo-items">
-                    <li>Wake up at 5 AM&nbsp;<span><button>X</button></span>&nbsp;<span style="float: right;"><button>Edit</button></span></li>
-                    <li>Go to gym.&nbsp;<span><button>X</button></span>&nbsp;<span style="float: right;"><button>Edit</button></span></li>
-                </ul>
+                <div id="todo-items-list">
+                    <div id="empty-display" class="empty-todo">
+                        <p>No ToDo Items to show</p>
+                    </div>
+                </div>
             </div>
+
 
             <!-- User profile section -->
             <div id="user" class="home-content-item">
@@ -63,9 +65,7 @@
                     <br/><br/>
                 </form>
             </div>
-        </div>
-    <!-- </div> -->
-    
+        </div>    
 
     <!-- Footer -->
     <div class="footer">
