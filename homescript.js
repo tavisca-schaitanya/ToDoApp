@@ -1,3 +1,22 @@
+function getTodoList(){
+    let xmlhttp = new XMLHttpRequest();
+    let url = "https://jsonplaceholder.typicode.com/todos";
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            let todo_list = JSON.parse(this.responseText);
+            displayTodo(todo_list);
+        }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+
+    function displayTodo(todo_list){
+        for(i = 0; i < todo_list.length; i++)
+            addTodo(todo_list[i].title);
+    }
+}
+
+
 // Function to create a todo item block using the input description
 function getTodoItem(desc){
     let todo_block = document.createElement('div');
@@ -53,9 +72,7 @@ function getTodoItem(desc){
 
 
 // Function to add a new todo item to todo list
-function addTodo(){
-    let desc = document.getElementById('todo-input').value;
-
+function addTodo(desc){
     if(desc == "")
         return;
         

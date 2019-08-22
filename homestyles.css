@@ -63,10 +63,14 @@ html *{
 
 #todo-items-list{
   list-style-type: none;
-  width:auto;
+  width:100%;
   height: auto;
   overflow-y: auto;
   padding-top:24px;
+}
+
+.todo-block{
+
 }
 
 @keyframes expand {
