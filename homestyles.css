@@ -20,19 +20,20 @@ html *{
     color:white;
     float: left;
     grid-area: menu;
+    
 }
 
 #navigation-bar ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    background-color: #f1f1f1;
+    background-color: #e9e6e6;
 }
   
 #navigation-bar ul li a {
   display: block;
   color: #000;
-  padding: 8px 16px;
+  padding: 12px 16px;
   text-decoration: none;
 }
 
@@ -45,7 +46,7 @@ html *{
 /* Content based on navigation bar */
 #home-content{
   width:100%;
-  height:500px;
+  /* height:500px; */
   background-color: white;
   overflow-y: hidden;
   grid-area: main;
@@ -56,14 +57,26 @@ html *{
 .home-content-item{
   height: 500px;
   padding: 16px;
+  overflow: auto;
 }
 
 
 #todo-items-list{
   list-style-type: none;
-  width:100%;
+  width:auto;
+  height: auto;
   overflow-y: auto;
   padding-top:24px;
+}
+
+@keyframes expand {
+  from {
+    transform: scale(0);
+  }
+}
+
+.animate-add{
+  animation: expand .5s ease-in-out;
 }
 
 .todo-item{
@@ -144,10 +157,10 @@ html *{
   border: 1px solid gray;
   border-radius: 4px;
   opacity: 0.85;
-  display: inline-block;
   font-size: 17px;
   line-height: 20px;
   text-decoration: none;
+  transform: linear;
 }
 
 
@@ -169,7 +182,7 @@ html *{
 }
 
 .empty-todo{
-  width:50%;
+  width:100%;
   background-color: rgb(24, 32, 87, 0.3);
   border-radius: 4px;
   padding:10%;

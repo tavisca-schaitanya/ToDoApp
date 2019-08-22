@@ -2,10 +2,12 @@
 function getTodoItem(desc){
     let todo_block = document.createElement('div');
     todo_block.setAttribute('class', 'todo-block');
+    todo_block.classList.add('animate-add');
     
     let todo_item = document.createElement('div');
     todo_item.setAttribute('class', 'todo-item');
     
+    //Create div with text and edit button
     let todo_div1 = document.createElement('div');
     let todo_desc = document.createElement('p');
     todo_desc.setAttribute('class', 'todo-desc');
@@ -15,6 +17,7 @@ function getTodoItem(desc){
     edit_button.setAttribute('onclick', 'editTodo(this)')
     edit_button.innerHTML = 'Edit';
     
+    //Create div with input and save button
     let todo_div2 = document.createElement('div');
     todo_div2.style.display = "none";
     let edit_input = document.createElement('input');
@@ -25,12 +28,15 @@ function getTodoItem(desc){
     save_button.setAttribute('onclick', 'saveTodo(this)');
     save_button.innerHTML = 'Save';
     
+
+    //Create delete button with icon
     delete_button = document.createElement('button');
     delete_button.setAttribute('class', 'delete-button');
     delete_button.setAttribute('onclick', 'deleteTodo(this)')
     delete_icon = document.createElement('img');
     delete_icon.setAttribute('class', 'delete-icon');
     delete_icon.setAttribute('src', 'delete-icon.jpg'); 
+
 
     todo_div1.appendChild(todo_desc);
     todo_div1.appendChild(edit_button);
@@ -59,6 +65,7 @@ function addTodo(){
     document.getElementById('todo-input').value = "";
     searchTodo("");
     toggleEmptyTodo();
+    setTimeout(()=>todo_block.classList.remove('animate-add'), 500);
 }
 
 // Function to delete a todo item from todo list
