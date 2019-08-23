@@ -1,12 +1,18 @@
+// Called onpageload. Sets the loading gif and initiate data fetch.
 function loadTodo(){
     let loader = document.createElement('div');
     loader.setAttribute('id', 'loading');
     let todo_list = document.getElementById('todo-items-list');
+    //Displays loading gif
     todo_list.appendChild(loader);
+
+    //Initiate data fetch
     setTimeout(getTodoList, 1500);
-    setTimeout(toggleEmptyTodo, 1600);
+    //Check whether items list is empty or not
+    setTimeout(toggleEmptyTodo, 2000);
 }
 
+// Funciton to fetch data from 
 function getTodoList(){
     let xmlhttp = new XMLHttpRequest();
     let url = "https://jsonplaceholder.typicode.com/todos";
@@ -19,10 +25,13 @@ function getTodoList(){
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 
+    //Adds todo list block for every element in todo list
     function displayTodo(todo_list){
         for(i = 0; i < todo_list.length; i++)
             addTodo(todo_list[i].title, todo_list[i].completed);
     }
+
+    //Removes the loading gif after data is fetched
     let todo_list = document.getElementById('todo-items-list');
     let loader = document.getElementById('loading');
     todo_list.removeChild(loader);
@@ -78,9 +87,9 @@ function getTodoItem(desc, isCompleted){
     delete_button.setAttribute('onclick', 'deleteTodo(this)')
     delete_icon = document.createElement('img');
     delete_icon.setAttribute('class', 'delete-icon');
-    delete_icon.setAttribute('src', 'delete-icon.jpg'); 
+    delete_icon.setAttribute('src', 'images/delete-icon.jpg'); 
 
-
+    //Create dom tree with items hierarchy
     todo_div1.appendChild(todo_desc);
     todo_div1.appendChild(edit_button);
     todo_div2.appendChild(edit_input);
@@ -100,19 +109,29 @@ function getTodoItem(desc, isCompleted){
 function addTodo(desc, isCompleted = false){
     if(desc == "")
         return;
-        
+    
+    //Create todo block and fill it.
     let todo_items_list = document.getElementById("todo-items-list");
     let todo_block = getTodoItem(desc, isCompleted);
     todo_items_list.appendChild(todo_block);
+
+    //Remove typed text from search box
     document.getElementById('todo-input').value = "";
+    //Replace todo items to display all items(since currently list has only searched keyword items)
     searchTodo("");
+
+    //Remove "No todo items to show" banner after element is added.
     toggleEmptyTodo();
+    //Remove animation from todo-block to stop it from animation when searched.
+    //(Animation should only work on add)
     setTimeout(()=>todo_block.classList.remove('animate-add'), 500);
 }
+
 
 // Function to delete a todo item from todo list
 function deleteTodo(child){
     child.parentElement.remove();
+    //Check for "No todo items to show" banner after deletion of items
     toggleEmptyTodo();
 }
 
@@ -120,22 +139,29 @@ function deleteTodo(child){
 // Function to edit todo item
 function editTodo(element){
     let editable = element.parentElement.nextElementSibling;
+    //Get the text from todo-desc and copy it to input text box value
     editable.childNodes[0].value = element.previousElementSibling.innerHTML;
+    //Display the input text box.
     editable.style.display = "block";
+    //Hide the todo desc text.
     element.parentElement.style.display = "none";
 }
 
 // Function to save edited todo item
 function saveTodo(element){
     let todo_item = element.parentElement.previousElementSibling;
+    //Restricts from saving todo item value as empty. Copies input box value to todo desc inner text
     if(element.previousElementSibling.value != "")
         todo_item.childNodes[0].innerHTML = element.previousElementSibling.value;
+    //Display the todo desc text
     todo_item.style.display = "block";
+    //Hide the input text box
     element.parentElement.style.display = "none";
 }
 
 // Display empty banner when no list items found
 function toggleEmptyTodo(){
+    //childElements will be 1 when empty since there is a "No todo items to show" banner by default.
     if(document.getElementById("todo-items-list").childElementCount == 1){
         document.getElementById("empty-display").style.display = "block";
     }
@@ -148,14 +174,17 @@ function toggleEmptyTodo(){
 function searchTodo(keyword){
     let todo_items_list = document.getElementById('todo-items-list');
     let todo_blocks = todo_items_list.getElementsByClassName('todo-block');
+    //Traverse all todo blocks
     for(let i = 0; i < todo_blocks.length; i++)
     {
         let todo_item = todo_blocks[i].getElementsByClassName('todo-item')[0];
         let todo_text_item = todo_item.getElementsByTagName("div")[0];
         let todo_text = todo_text_item.getElementsByTagName('p')[0].innerHTML;
+        //Display todo blocks when match
         if(todo_text.toLowerCase().indexOf(keyword.toLowerCase()) > -1){
             todo_blocks[i].style.display = "block";
         }
+        //Hide todo blocks when not matched
         else{
             todo_blocks[i].style.display = "none";
         }

@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
-    <link rel="stylesheet" href="appstyles.css">
-    <link rel="stylesheet" href="homestyles.css">
-    <script src="homescript.js"></script>
+    <link rel="stylesheet" href="styles/appstyles.css">
+    <link rel="stylesheet" href="styles/homestyles.css">
+    <script src="script/homescript.js"></script>
 </head>
 <body class="grid-container" onload="loadTodo()">
     <!-- Header -->
@@ -40,6 +40,7 @@
 
                 <!-- To do items list -->
                 <div id="todo-items-list">
+                    <!-- No todo items banner -->
                     <div id="empty-display" class="empty-todo">
                         <p>No ToDo Items to show</p>
                     </div>
@@ -56,6 +57,7 @@
             <!-- Login page -->
             <div id="login" class="home-content-item">
                 <h2>Login</h2>
+                <!-- Login form -->
                 <form>
                     <input type="text" name="username" placeholder="username"/>
                     <br/><br/>
