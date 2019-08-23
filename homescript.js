@@ -1,3 +1,12 @@
+function loadTodo(){
+    let loader = document.createElement('div');
+    loader.setAttribute('id', 'loading');
+    let todo_list = document.getElementById('todo-items-list');
+    todo_list.appendChild(loader);
+    setTimeout(getTodoList, 1500);
+    setTimeout(toggleEmptyTodo, 1600);
+}
+
 function getTodoList(){
     let xmlhttp = new XMLHttpRequest();
     let url = "https://jsonplaceholder.typicode.com/todos";
@@ -14,6 +23,9 @@ function getTodoList(){
         for(i = 0; i < todo_list.length; i++)
             addTodo(todo_list[i].title, todo_list[i].completed);
     }
+    let todo_list = document.getElementById('todo-items-list');
+    let loader = document.getElementById('loading');
+    todo_list.removeChild(loader);
 }
 
 

@@ -249,9 +249,20 @@ html *{
   border-radius: 4px;
   padding:10%;
   height: 50%;
+  display: none;
 }
 
 .empty-todo p{
   color:grey;
   font-size: 32px;
+}
+
+#loading {
+  background: url('loading.gif') no-repeat center center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 9999999;
 }
